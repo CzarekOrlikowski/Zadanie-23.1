@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.model.Product;
 import com.example.demo.repository.ProductRepository;
+import com.example.demo.repository.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,17 +14,24 @@ import java.util.Set;
 @Controller
 public class ProductController {
 
-    private ProductRepository productRepository;
+//    private ProductRepository productRepository;
+//
+//    @Autowired
+//    public ProductController(ProductRepository productRepository) {
+//        this.productRepository = productRepository;
+//    }
+
+    private ProductService productService;
 
     @Autowired
-    public ProductController(ProductRepository productRepository) {
-        this.productRepository = productRepository;
+    public ProductController(ProductService productService) {
+        this.productService = productService;
     }
 
     @GetMapping("/lista")
     public String getProductsList(Model model) {
         Set<Product> products;
-        products = productRepository.findAll();
+        products = productService.findAll();
         model.addAttribute("products", products);
         return "lista";
     }
@@ -31,7 +39,7 @@ public class ProductController {
     @GetMapping("/tabela")
     public String getProductsTable(Model model) {
         Set<Product> products;
-        products = productRepository.findAll();
+        products = productService.findAll();
         model.addAttribute("products", products);
         return "tabela";
     }
@@ -45,7 +53,7 @@ public class ProductController {
 
     @PostMapping("/add")
     String add(Product product) {
-        productRepository.add(product);
+        productService.add(product);
         return "redirect:/tabela";
     }
 

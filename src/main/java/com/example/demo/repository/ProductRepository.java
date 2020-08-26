@@ -20,13 +20,6 @@ public class ProductRepository {
         products.add(new Product("opona", 90));
     }
 
-//    public Optional<Product> findByName(String name) {
-//
-//        return products.stream()
-//                .filter(product -> product.getName().equals(name))
-//                .findFirst();
-//    }
-
     public Set<Product> findAll() {
 
         return new HashSet<>(products);
