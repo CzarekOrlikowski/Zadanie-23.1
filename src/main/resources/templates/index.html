@@ -10,8 +10,8 @@
 <!--<div th:replace="elements :: header"></div>-->
 
 <h3>Dodaj nowy produkt:</h3>
-<form class="input-group mb-3" method="post" th:action="@{/add}">
-    <input type="text" th:field="*{product.name}" placeholder="nazwa produktu" required>
+<form class="input-group input-group-sm mb-3" method="post" th:action="@{/add}">
+    <input type="text" th:field="*{product.name}" placeholder="nazwa produktu" required></br>
     <input type="number" step="0.01" th:field="*{product.price}" placeholder="cena produktu" required>
     <input type="submit" value="Dodaj">
 </form>

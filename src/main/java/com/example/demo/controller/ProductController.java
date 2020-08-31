@@ -30,17 +30,19 @@ public class ProductController {
 
     @GetMapping("/lista")
     public String getProductsList(Model model) {
-        Set<Product> products;
-        products = productService.findAll();
+        Set<Product> products = productService.findAll();
+        Double totalPrice = productService.showTotalPrice(products);
         model.addAttribute("products", products);
+        model.addAttribute("price", totalPrice);
         return "lista";
     }
 
     @GetMapping("/tabela")
     public String getProductsTable(Model model) {
-        Set<Product> products;
-        products = productService.findAll();
+        Set<Product> products = productService.findAll();
+        Double totalPrice = productService.showTotalPrice(products);
         model.addAttribute("products", products);
+        model.addAttribute("price", totalPrice);
         return "tabela";
     }
 
